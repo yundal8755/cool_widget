@@ -1,3 +1,5 @@
+import 'package:cool_widget/view/dialog_page.dart';
+import 'package:cool_widget/view/bottom_sheet_page.dart';
 import 'package:cool_widget/view/button_page.dart';
 import 'package:cool_widget/view/home_page.dart';
 import 'package:flutter/material.dart';
@@ -21,7 +23,9 @@ class _App extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => const HomePage(),
-        '/buttonPage': (context) => const ButtonPage(),
+        '/BottomSheet': (context) => const BottomSheetPage(),
+        '/Button': (context) => const ButtonPage(),
+        '/Dialog': (context) => const DialogPage(),
       },
     );
   }

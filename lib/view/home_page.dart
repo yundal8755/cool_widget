@@ -1,5 +1,4 @@
 import 'package:cool_widget/cool_widget/button/button.dart';
-import 'package:cool_widget/view/widget_demo_page.dart';
 import 'package:cool_widget/view_model/home_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -39,31 +38,17 @@ class _HomeState extends State<HomePage> {
             itemCount: viewModel.widgetNames.length,
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
-              mainAxisSpacing: 2,
-              crossAxisSpacing: 2,
               childAspectRatio: 2,
             ),
             itemBuilder: (context, index) {
               final String widgetName = viewModel.widgetNames[index];
-              final String displayName = '$widgetName page';
 
               return Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: CoolButton(
-                  text: widgetName,
-                  onPressed: () {
-                    if (widgetName == "Button") {
-                      Navigator.pushNamed(context, '/buttonPage');
-                    } else {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) =>
-                              WidgetDemoPage(widgetName: displayName),
-                        ),
-                      );
-                    }
-                  },
+                padding: const EdgeInsets.all(16.0),
+                child: PrimaryButton(
+                  title: widgetName,
+                  onPressed: () =>
+                      viewModel.routeToWidgetPage(context, widgetName),
                 ),
               );
             },
