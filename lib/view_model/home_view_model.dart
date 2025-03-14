@@ -1,0 +1,58 @@
+import 'package:flutter/material.dart';
+
+class HomeViewModel extends ChangeNotifier {
+  State state;
+  HomeViewModel(this.state);
+
+  // 48개의 위젯 이름을 담은 리스트
+  final List<String> widgetNames = [
+    "Button",
+    "TextField",
+    "AppBar",
+    "NavigationBar",
+    "Drawer",
+    "BottomSheet",
+    "Dialog",
+    "Alert",
+    "Snackbar",
+    "ListTile",
+    "Checkbox",
+    "Switch",
+    "RadioButton",
+    "Toast",
+    "FormField",
+    "Image",
+    "Card",
+    "ExpansionTile",
+    "Chip",
+    "Dropdown",
+    "TabBar",
+    "PageView",
+    "Tooltip",
+    "ModalSheet",
+    "GestureDetector",
+    "ProgressBar",
+    "LoadingIndicator",
+    "ActivityIndicator",
+    "DatePicker",
+    "TimePicker",
+    "Calendar",
+    "Stepper",
+    "RangeSlider",
+    "SliverAppBar",
+    "DataTable",
+    "MapWidget",
+    "TreeView",
+    "ColorPicker",
+    "Avatar",
+    "Badge",
+    "SkeletonLoader",
+    "Carousel",
+    "SearchBar",
+    "RatingBar",
+    "FilterChip",
+    "ActionChip",
+    "StepIndicator",
+    "DataPager",
+  ];
+}
