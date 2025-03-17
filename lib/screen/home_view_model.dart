@@ -7,6 +7,9 @@ class HomeViewModel extends ChangeNotifier {
   // 48개의 위젯 이름을 담은 리스트
   final List<String> widgetNames = [
     "Alert",
+    "Avatar",
+    "Avatar+Badge",
+    "Badge",
     "Button",
     "BottomSheet",
     "Dialog",
@@ -44,8 +47,6 @@ class HomeViewModel extends ChangeNotifier {
     "MapWidget",
     "TreeView",
     "ColorPicker",
-    "Avatar",
-    "Badge",
     "SkeletonLoader",
     "Carousel",
     "SearchBar",

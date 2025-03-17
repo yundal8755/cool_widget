@@ -1,7 +1,11 @@
-import 'package:cool_widget/view/dialog_page.dart';
-import 'package:cool_widget/view/bottom_sheet_page.dart';
-import 'package:cool_widget/view/button_page.dart';
-import 'package:cool_widget/view/home_page.dart';
+import 'package:cool_widget/screen/component/alert/alert_page.dart';
+import 'package:cool_widget/screen/component/avatar/avatar_page.dart';
+import 'package:cool_widget/screen/component/badge/badge_page.dart';
+import 'package:cool_widget/screen/component/dialog/dialog_page.dart';
+import 'package:cool_widget/screen/component/bottom_sheet/bottom_sheet_page.dart';
+import 'package:cool_widget/screen/component/button/button_page.dart';
+import 'package:cool_widget/screen/home_page.dart';
+import 'package:cool_widget/screen/layout/avatar_with_badge/avatar_with_badge_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -23,6 +27,10 @@ class _App extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => const HomePage(),
+        // '/Alert': (context) => const AlertPage(),
+        '/Avatar': (context) => const AvatarPage(),
+        '/Avatar+Badge': (context) => const AvatarWithBadgePage(),
+        '/Badge': (context) => const BadgePage(),
         '/BottomSheet': (context) => const BottomSheetPage(),
         '/Button': (context) => const ButtonPage(),
         '/Dialog': (context) => const DialogPage(),

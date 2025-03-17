@@ -1,9 +1,9 @@
-import 'package:cool_widget/cool_widget/alert/alert.dart';
-import 'package:cool_widget/cool_widget/alert/alert_style.dart';
-import 'package:cool_widget/cool_widget/bottom_sheet/bottom_sheet.dart';
-import 'package:cool_widget/cool_widget/bottom_sheet/bottom_sheet_style.dart';
-import 'package:cool_widget/cool_widget/button/button.dart';
-import 'package:cool_widget/cool_widget/button/button_style.dart';
+import 'package:cool_widget/app/widget/component/alert/alert.dart';
+import 'package:cool_widget/app/widget/component/alert/alert_style.dart';
+import 'package:cool_widget/app/widget/component/bottom_sheet/bottom_sheet.dart';
+import 'package:cool_widget/app/widget/component/bottom_sheet/bottom_sheet_style.dart';
+import 'package:cool_widget/app/widget/component/button/button.dart';
+import 'package:cool_widget/app/widget/component/button/button_style.dart';
 import 'package:flutter/material.dart';
 
 class ButtonPage extends StatelessWidget {
@@ -12,21 +12,21 @@ class ButtonPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("버튼 예시")),
+      appBar: AppBar(title: const Text("Button")),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            CoolButton(
-              text: "텍스트 버튼",
+            PrimaryButton(
+              title: "텍스트 버튼",
               onPressed: () => showMyBottomSheet(context),
-              width: ButtonWidth.extraLarge,
+              width: ButtonWidth.infinity,
             ),
 
             // 여백
             const SizedBox(height: 16),
 
-            CoolButton(
+            PrimaryButton(
               icon: const Icon(Icons.thumb_up),
               onPressed: () => _testAlert(context),
             ),

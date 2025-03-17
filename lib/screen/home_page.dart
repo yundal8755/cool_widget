@@ -1,5 +1,5 @@
-import 'package:cool_widget/cool_widget/button/button.dart';
-import 'package:cool_widget/view_model/home_view_model.dart';
+import 'package:cool_widget/app/widget/component/button/button.dart';
+import 'package:cool_widget/screen/home_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

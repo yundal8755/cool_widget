@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 
-///
-/// [ENUM] 버튼 커스터마이징에 필요한 enum
-///
 enum ButtonShape {
   rectangle,
   circle,
@@ -12,7 +9,7 @@ enum ButtonWidth {
   small,
   medium,
   large,
-  extraLarge,
+  infinity,
 }
 
 enum ButtonHeight {
@@ -28,10 +25,8 @@ enum ButtonState {
 }
 
 ///
-/// [STYLE] 버튼 스타일
-///
-
 /// 버튼 스타일을 결정하는 추상 클래스
+///
 abstract class AbstractButtonStyle {
   // 기존 필드
   Color? get backgroundColor;
@@ -59,7 +54,9 @@ abstract class AbstractButtonStyle {
   AbstractButtonStyle resolve(ButtonState state);
 }
 
-/// 추상 클래스 스타일 구현
+///
+/// 스타일 구현체
+///
 class DefaultButtonStyle implements AbstractButtonStyle {
   @override
   final Color? backgroundColor;
@@ -148,8 +145,8 @@ class DefaultButtonStyle implements AbstractButtonStyle {
         return 150;
       case ButtonWidth.large:
         return 220;
-      case ButtonWidth.extraLarge:
-        return 300;
+      case ButtonWidth.infinity:
+        return double.infinity;
     }
   }
 
@@ -203,7 +200,9 @@ class DefaultButtonStyle implements AbstractButtonStyle {
   }
 }
 
-/// 앱에서 자주 쓰는 버튼 스타일들을 모아둔 클래스
+///
+/// 자주 사용하는 스타일
+///
 class CoolButtonStyle {
   ///
   /// [PrimaryButton]

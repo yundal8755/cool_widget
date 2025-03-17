@@ -1,4 +1,4 @@
-import 'package:cool_widget/cool_widget/alert/alert_style.dart';
+import 'package:cool_widget/app/widget/component/alert/alert_style.dart';
 import 'package:flutter/material.dart';
 
 Future<void> showCoolAlert({

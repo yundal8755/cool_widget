@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bounceable/flutter_bounceable.dart';
-import 'button_style.dart'; // AbstractButtonStyle, DefaultButtonStyle 등
+import 'button_style.dart';
 
 /// 버튼의 공통 로직을 담당하는 베이스 위젯.
 class CoolBaseButton extends StatelessWidget {
@@ -139,8 +139,8 @@ class CoolBaseButton extends StatelessWidget {
 }
 
 /// 메인 버튼
-class CoolButton extends StatelessWidget {
-  final String? text;
+class PrimaryButton extends StatelessWidget {
+  final String? title;
   final Widget? icon;
   final VoidCallback? onPressed;
 
@@ -155,9 +155,9 @@ class CoolButton extends StatelessWidget {
   final bool useLongPress;
   final VoidCallback? onLongPress;
 
-  const CoolButton({
+  const PrimaryButton({
     super.key,
-    this.text,
+    this.title,
     this.icon,
     this.onPressed,
     this.isEnabled = true,
@@ -177,7 +177,7 @@ class CoolButton extends StatelessWidget {
 
     return CoolBaseButton(
       style: usedStyle,
-      text: text,
+      text: title,
       icon: icon,
       onPressed: onPressed,
       isEnabled: isEnabled,
