@@ -1,6 +1,5 @@
 import 'package:cool_widget/screen/component/alert/alert_view_model.dart';
-import 'package:cool_widget/app/widget/component/button/button.dart';
-import 'package:cool_widget/app/widget/component/button/button_style.dart';
+import 'package:cool_widget/app/widget/component/button/cool_button_widget.dart';
 import 'package:flutter/material.dart';
 
 class AlertPage extends StatefulWidget {
@@ -27,10 +26,9 @@ class _AlertPageState extends State<AlertPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            PrimaryButton(
+            CoolButton.text(
               title: "닫기 버튼, indicator bar 존재",
               onPressed: () => viewModel.showMyBottomSheet(context),
-              width: ButtonWidth.infinity,
             ),
           ],
         ),
