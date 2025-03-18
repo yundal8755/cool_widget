@@ -4,6 +4,7 @@ import 'package:cool_widget/screen/component/badge/badge_page.dart';
 import 'package:cool_widget/screen/component/dialog/dialog_page.dart';
 import 'package:cool_widget/screen/component/bottom_sheet/bottom_sheet_page.dart';
 import 'package:cool_widget/screen/component/button/button_page.dart';
+import 'package:cool_widget/screen/component/text_field/text_field_page.dart';
 import 'package:cool_widget/screen/home_page.dart';
 import 'package:cool_widget/screen/layout/avatar_with_badge/avatar_with_badge_page.dart';
 import 'package:flutter/material.dart';
@@ -34,6 +35,7 @@ class _App extends StatelessWidget {
         '/BottomSheet': (context) => const BottomSheetPage(),
         '/Button': (context) => const ButtonPage(),
         '/Dialog': (context) => const DialogPage(),
+        '/TextField': (context) => const TextFieldPage(),
       },
     );
   }
