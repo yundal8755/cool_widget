@@ -18,6 +18,8 @@ dependencies:
   image_picker: ^1.1.2
   cached_network_image: ^3.4.1
   flutter_svg: ^2.0.17
+  bounce_tapper: ^1.1.4
+  shadcn_flutter: ^0.0.23
 
 dev_dependencies:
   flutter_lints: ^4.0.0
@@ -29,3 +31,15 @@ flutter:
     - assets/
     - assets/icons/
     - assets/images/
+
+  fonts:
+    - family: pretendard
+      fonts:
+        - asset: assets/fonts/pretendard/Pretendard-Regular.otf
+          weight: 400
+        - asset: assets/fonts/pretendard/Pretendard-Medium.otf
+          weight: 500
+        - asset: assets/fonts/pretendard/Pretendard-SemiBold.otf
+          weight: 600
+        - asset: assets/fonts/pretendard/Pretendard-Bold.otf
+          weight: 800 
