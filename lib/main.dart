@@ -1,4 +1,3 @@
-import 'package:cool_widget/screen/component/alert/alert_page.dart';
 import 'package:cool_widget/screen/component/avatar/avatar_page.dart';
 import 'package:cool_widget/screen/component/badge/badge_page.dart';
 import 'package:cool_widget/screen/component/dialog/dialog_page.dart';
@@ -7,6 +6,7 @@ import 'package:cool_widget/screen/component/button/button_page.dart';
 import 'package:cool_widget/screen/component/text_field/text_field_page.dart';
 import 'package:cool_widget/screen/home_page.dart';
 import 'package:cool_widget/screen/layout/avatar_with_badge/avatar_with_badge_page.dart';
+import 'package:cool_widget/screen/layout/stepper/stepper_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -36,6 +36,7 @@ class _App extends StatelessWidget {
         '/Button': (context) => const ButtonPage(),
         '/Dialog': (context) => const DialogPage(),
         '/TextField': (context) => const TextFieldPage(),
+        '/Stepper': (context) => const StepperPage(),
       },
     );
   }

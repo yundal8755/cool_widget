@@ -39,12 +39,12 @@ abstract class CoolBadgeStyle {
 class CircleBadgeStyle extends CoolBadgeStyle {
   CircleBadgeStyle({
     BadgeShape super.shape = BadgeShape.circle,
-    super.backgroundColor,
+    required super.backgroundColor,
+    required super.contentPadding,
+    required super.radius,
     super.borderColor,
     super.borderWidth,
-    super.contentPadding,
     super.shadow,
-    super.radius,
   }) : super._();
 
   /// 기본값

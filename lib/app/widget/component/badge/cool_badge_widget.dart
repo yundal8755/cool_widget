@@ -43,6 +43,9 @@ class CoolBadge extends StatelessWidget {
         color: style.backgroundColor,
         shape: BoxShape.circle,
         boxShadow: style.shadow,
+        border: Border.all(
+            color: style.borderColor ?? Colors.transparent,
+            width: style.borderWidth ?? 0),
       ),
       child: child,
     );

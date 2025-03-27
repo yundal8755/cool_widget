@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cool_widget/app/widget/component/avatar/cool_avatar_style.dart';
 import 'package:cool_widget/app/widget/component/avatar/cool_avatar_widget.dart';
-import 'package:cool_widget/core/constants/assets.dart';
+import 'package:cool_widget/app/constants/assets.dart';
 import 'package:cool_widget/screen/component/avatar/avatar_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';

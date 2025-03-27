@@ -1,4 +1,4 @@
-import 'package:cool_widget/app/widget/component/button/cool_button_widget.dart';
+import 'package:cool_widget/app/widget/component/button/new_cool_button.dart';
 import 'package:cool_widget/screen/component/dialog/dialog_view_model.dart';
 import 'package:flutter/material.dart';
 
@@ -26,9 +26,9 @@ class _DialogPageState extends State<DialogPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            CoolButton.text(
-              title: '밑에서 위로 올라옴',
+            CoolButton(
               onPressed: () => viewModel.bottomToTopAlert(context),
+              child: const Text('밑에서 위로 올라옴'),
             ),
           ],
         ),

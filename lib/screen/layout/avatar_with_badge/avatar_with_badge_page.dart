@@ -55,8 +55,11 @@ class _AvatarWithBadgePageState extends State<AvatarWithBadgePage> {
             Align(
               alignment: Alignment.bottomRight,
               child: CoolBadge.circle(
-                style:
-                    CircleBadgeStyle(radius: 36, backgroundColor: Colors.blue),
+                style: CircleBadgeStyle(
+                  radius: 36,
+                  backgroundColor: Colors.blue,
+                  contentPadding: const EdgeInsets.all(1),
+                ),
                 child: const Icon(Icons.image),
               ),
             ),

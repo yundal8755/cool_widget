@@ -2,28 +2,27 @@ import 'package:flutter/material.dart';
 import 'cool_avatar_style.dart';
 
 class CoolAvatar extends StatelessWidget {
-  final CoolAvatarStyle style;
+  final CoolAvatarStyle? style;
   final Widget child;
 
   /// [Circle]
   CoolAvatar.circle({
     super.key,
-    Widget? child,
-    CoolAvatarStyle? style,
-  })  : style = style ?? CircleAvatarStyle.circleDefault,
-        child = child ?? const SizedBox.shrink();
+    CircleAvatarStyle? style,
+    required this.child,
+  }) : style = style ?? CircleAvatarStyle.circleDefault;
 
   /// [Rectangle]
   CoolAvatar.rectangle({
     super.key,
-    CoolAvatarStyle? style,
+    RectangleAvatarStyle? style,
     Widget? child,
   })  : style = style ?? RectangleAvatarStyle.rectangleDefault,
         child = child ?? const SizedBox.shrink();
 
   @override
   Widget build(BuildContext context) {
-    switch (style.shape) {
+    switch (style?.shape) {
       case AvatarShape.circle:
         return _circleAvatar();
 
@@ -38,13 +37,13 @@ class CoolAvatar extends StatelessWidget {
   /// CoolAvatar.circle
   Widget _circleAvatar() {
     return Container(
-      width: style.radius,
-      height: style.radius,
+      width: style?.radius,
+      height: style?.radius,
       clipBehavior: Clip.antiAlias,
       decoration: BoxDecoration(
-        color: style.backgroundColor,
+        color: style?.backgroundColor,
         shape: BoxShape.circle,
-        boxShadow: style.shadow,
+        boxShadow: style?.shadow,
       ),
       child: child,
     );
@@ -53,13 +52,13 @@ class CoolAvatar extends StatelessWidget {
   /// CoolAvatar.rectangle
   Widget _rectangleAvatar() {
     return Container(
-      width: style.width,
-      height: style.height,
+      width: style?.width,
+      height: style?.height,
       clipBehavior: Clip.antiAlias,
       decoration: BoxDecoration(
-        color: style.backgroundColor,
-        borderRadius: BorderRadius.circular(style.cornerRadius ?? 0),
-        boxShadow: style.shadow,
+        color: style?.backgroundColor,
+        borderRadius: BorderRadius.circular(style?.cornerRadius ?? 0),
+        boxShadow: style?.shadow,
       ),
       child: child,
     );

@@ -1,4 +1,4 @@
-import 'package:cool_widget/app/widget/component/button/button.dart';
+import 'package:cool_widget/app/widget/component/button/new_cool_button.dart';
 import 'package:cool_widget/screen/home_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -15,43 +15,80 @@ class _HomeState extends State<HomePage> {
 
   @override
   void initState() {
-    viewModel = HomeViewModel(this);
     super.initState();
-  }
-
-  @override
-  void dispose() {
-    viewModel.dispose();
-    super.dispose();
+    viewModel = HomeViewModel(this);
   }
 
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<HomeViewModel>.value(
       value: viewModel,
-      builder: (context, _) {
-        return Scaffold(
-          appBar: AppBar(
-            title: const Text('Cool Widget'),
-          ),
-          body: GridView.builder(
-            itemCount: viewModel.widgetNames.length,
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              childAspectRatio: 2,
-            ),
-            itemBuilder: (context, index) {
-              final String widgetName = viewModel.widgetNames[index];
-
-              return Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: PrimaryButton(
-                  title: widgetName,
-                  onPressed: () =>
-                      viewModel.routeToWidgetPage(context, widgetName),
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text('Cool Widget'),
+          surfaceTintColor: Colors.transparent,
+          backgroundColor: Colors.transparent,
+        ),
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
+                  "진행중",
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-              );
-            },
+                const SizedBox(height: 8),
+
+                _buildGrid(viewModel.completedWidgetNames),
+
+                const SizedBox(height: 24),
+
+                const Text(
+                  "대기중",
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(height: 8),
+
+                // 4) 미완성 위젯들 Grid
+                _buildGrid(viewModel.incompleteWidgetNames),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildGrid(List<String> names) {
+    return GridView.builder(
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+      itemCount: names.length,
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+        childAspectRatio: 2,
+        mainAxisSpacing: 8,
+        crossAxisSpacing: 8,
+      ),
+      itemBuilder: (context, index) {
+        final widgetName = names[index];
+        return Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: CoolButton(
+            onPressed: () => viewModel.routeToWidgetPage(context, widgetName),
+            child: SizedBox.expand(
+              child: Center(
+                child: Text(widgetName, overflow: TextOverflow.ellipsis),
+              ),
+            ),
           ),
         );
       },

@@ -31,6 +31,7 @@ class _BadgePageState extends State<BadgePage> {
               style: CircleBadgeStyle(
                 backgroundColor: Colors.lightBlue,
                 radius: 80,
+                contentPadding: const EdgeInsets.all(1),
               ),
               child: const Icon(Icons.follow_the_signs),
             ),
