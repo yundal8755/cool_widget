@@ -11,6 +11,8 @@ class CoolButton extends StatefulWidget {
   final bool useHaptic;
   final bool useBounce;
   final bool useRippleEffect;
+  final double? width;
+  final double? height;
 
   const CoolButton({
     super.key,
@@ -21,6 +23,8 @@ class CoolButton extends StatefulWidget {
     this.useHaptic = false,
     this.useBounce = true,
     this.useRippleEffect = true,
+    this.width,
+    this.height,
   });
 
   @override
@@ -63,7 +67,7 @@ class _CoolButtonState extends State<CoolButton> {
     required bool isRipple,
   }) {
     // 우선 사용자가 지정한 style 혹은 기본 mainStyle 가져옴
-    final baseStyle = widget.style ?? CoolButtonStyle.mainStyle;
+    final baseStyle = widget.style ?? CoolButtonStyle.main;
 
     // 만약 리플 효과가 false라면 overlayColor와 splashFactory를 재설정해서 리플 제거
     final updatedStyle = !isRipple
@@ -73,11 +77,15 @@ class _CoolButtonState extends State<CoolButton> {
           )
         : baseStyle;
 
-    return FilledButton(
-      onPressed: effectiveOnTap,
-      onLongPress: widget.onLongPress,
-      style: updatedStyle,
-      child: widget.child,
+    return SizedBox(
+      width: widget.width,
+      height: widget.height,
+      child: FilledButton(
+        onPressed: effectiveOnTap,
+        onLongPress: widget.onLongPress,
+        style: updatedStyle,
+        child: widget.child,
+      ),
     );
   }
 }

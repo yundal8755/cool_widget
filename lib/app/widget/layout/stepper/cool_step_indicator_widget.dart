@@ -11,21 +11,21 @@ class StepData {
   StepData({required this.title, required this.content});
 }
 
-class CoolStepper extends StatefulWidget {
+class CoolStepIndicator extends StatefulWidget {
   final List<StepData> steps;
   final VoidCallback onCompleted;
 
-  const CoolStepper({
-    Key? key,
+  const CoolStepIndicator({
+    super.key,
     required this.steps,
     required this.onCompleted,
-  }) : super(key: key);
+  });
 
   @override
-  State<CoolStepper> createState() => _CoolStepperState();
+  State<CoolStepIndicator> createState() => _CoolStepIndicatorState();
 }
 
-class _CoolStepperState extends State<CoolStepper> {
+class _CoolStepIndicatorState extends State<CoolStepIndicator> {
   int _currentStep = 0;
 
   @override
@@ -137,17 +137,6 @@ class _CoolStepperState extends State<CoolStepper> {
           style: AppTextStyle.h3,
         )
       ],
-    );
-  }
-
-  Widget _buildStepTitle(String title, bool isActive) {
-    return Text(
-      title,
-      style: TextStyle(
-        fontSize: 16,
-        fontWeight: FontWeight.bold,
-        color: isActive ? Colors.blue : Colors.black,
-      ),
     );
   }
 

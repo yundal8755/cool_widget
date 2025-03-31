@@ -20,6 +20,7 @@ dependencies:
   flutter_svg: ^2.0.17
   bounce_tapper: ^1.1.4
   shadcn_flutter: ^0.0.23
+  gap: ^3.0.1
 
 dev_dependencies:
   flutter_lints: ^4.0.0

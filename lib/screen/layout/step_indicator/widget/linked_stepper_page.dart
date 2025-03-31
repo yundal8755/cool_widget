@@ -3,8 +3,8 @@ import 'package:cool_widget/app/style/app_text_style.dart';
 import 'package:cool_widget/app/widget/component/badge/cool_badge_style.dart';
 import 'package:cool_widget/app/widget/component/badge/cool_badge_widget.dart';
 
-import 'package:cool_widget/app/widget/component/button/new_cool_button.dart';
-import 'package:cool_widget/screen/layout/stepper/stepper_view_model.dart';
+import 'package:cool_widget/app/widget/component/button/cool_button.dart';
+import 'package:cool_widget/screen/layout/step_indicator/stepp_indicator_view_model.dart';
 import 'package:flutter/material.dart';
 
 class LinkedStepperPage extends StatefulWidget {

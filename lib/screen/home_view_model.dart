@@ -4,7 +4,7 @@ class HomeViewModel extends ChangeNotifier {
   State state;
   HomeViewModel(this.state);
 
-  // 48개의 위젯 이름을 담은 리스트
+  // 41개의 위젯 이름을 담은 리스트
   final List<String> widgetNames = [
     "Avatar",
     "Avatar+Badge",
@@ -12,54 +12,49 @@ class HomeViewModel extends ChangeNotifier {
     "Button",
     "BottomSheet",
     "Dialog",
-    "TextField",
+    "FormField",
+    "SnackBar",
+    "StepIndicator",
     // ==========================
-    "Stepper",
+    "FilterChip",
     "Alert",
     "AppBar",
     "NavigationBar",
     "Drawer",
-    "Snackbar",
     "ListTile",
     "Checkbox",
     "Switch",
     "RadioButton",
-    "Toast",
-    "FormField",
+    "DataPager",
+    // ==========================
     "Image",
     "Card",
     "ExpansionTile",
-    "Chip",
     "Dropdown",
     "TabBar",
     "PageView",
     "Tooltip",
-    "ModalSheet",
-    "GestureDetector",
     "ProgressBar",
     "LoadingIndicator",
-    "ActivityIndicator",
     "DatePicker",
+    // ==========================
     "TimePicker",
     "Calendar",
     "RangeSlider",
     "SliverAppBar",
     "DataTable",
-    "MapWidget",
-    "TreeView",
     "ColorPicker",
     "SkeletonLoader",
     "Carousel",
     "SearchBar",
     "RatingBar",
-    "FilterChip",
+    // ==========================
     "ActionChip",
-    "StepIndicator",
-    "DataPager",
+    "Stepper",
   ];
 
-  List<String> get completedWidgetNames => widgetNames.sublist(0, 7);
-  List<String> get incompleteWidgetNames => widgetNames.sublist(7);
+  List<String> get completedWidgetNames => widgetNames.sublist(0, 9);
+  List<String> get incompleteWidgetNames => widgetNames.sublist(9);
 
   ///
   /// 위젯 이름에 알맞게 라우팅

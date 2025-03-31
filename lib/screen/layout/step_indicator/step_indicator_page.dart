@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class StepperPage extends StatelessWidget {
-  const StepperPage({super.key});
+class StepIndicatorPage extends StatelessWidget {
+  const StepIndicatorPage({super.key});
 
   @override
   Widget build(BuildContext context) {

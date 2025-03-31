@@ -1,4 +1,4 @@
-import 'package:cool_widget/app/widget/component/button/new_cool_button.dart';
+import 'package:cool_widget/app/widget/component/button/cool_button.dart';
 import 'package:cool_widget/screen/home_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
