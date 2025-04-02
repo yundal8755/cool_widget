@@ -17,8 +17,8 @@ class _AvatarWithBadgePageState extends State<AvatarWithBadgePage> {
 
   @override
   void initState() {
-    viewModel = AvatarWithBadgeViewModel(this);
     super.initState();
+    viewModel = AvatarWithBadgeViewModel(this);
   }
 
   @override
