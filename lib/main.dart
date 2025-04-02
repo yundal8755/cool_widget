@@ -1,14 +1,14 @@
-import 'package:cool_widget/screen/component/avatar/avatar_page.dart';
-import 'package:cool_widget/screen/component/badge/badge_page.dart';
-import 'package:cool_widget/screen/component/dialog/dialog_page.dart';
-import 'package:cool_widget/screen/component/bottom_sheet/bottom_sheet_page.dart';
-import 'package:cool_widget/screen/component/button/button_page.dart';
-import 'package:cool_widget/screen/component/snackbar/snackbar_page.dart';
-import 'package:cool_widget/screen/component/form_field/form_field_page.dart';
-import 'package:cool_widget/screen/home_page.dart';
-import 'package:cool_widget/screen/layout/avatar_with_badge/avatar_with_badge_page.dart';
-import 'package:cool_widget/screen/layout/radio_button/radio_group_page.dart';
-import 'package:cool_widget/screen/layout/step_indicator/step_indicator_page.dart';
+import 'package:cool_widget/presentation/pages/avatar/avatar_page.dart';
+import 'package:cool_widget/presentation/pages/badge/badge_page.dart';
+import 'package:cool_widget/presentation/pages/dialog/dialog_page.dart';
+import 'package:cool_widget/presentation/pages/bottom_sheet/bottom_sheet_page.dart';
+import 'package:cool_widget/presentation/pages/button/button_page.dart';
+import 'package:cool_widget/presentation/pages/snackbar/snackbar_page.dart';
+import 'package:cool_widget/presentation/pages/form_field/form_field_page.dart';
+import 'package:cool_widget/presentation/home_page.dart';
+import 'package:cool_widget/presentation/pages/avatar_with_badge/avatar_with_badge_page.dart';
+import 'package:cool_widget/presentation/pages/radio_group/radio_group_page.dart';
+import 'package:cool_widget/presentation/pages/step_indicator/step_indicator_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
