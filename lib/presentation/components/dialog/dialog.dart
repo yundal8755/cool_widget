@@ -1,7 +1,7 @@
-import 'package:cool_widget/presentation/components/alert/alert_style.dart';
+import 'package:cool_widget/presentation/components/dialog/dialog_style.dart';
 import 'package:flutter/material.dart';
 
-Future<void> showCoolAlert({
+Future<void> showCoolDialog({
   required BuildContext context,
   required AlertSize size,
   required Widget child,
