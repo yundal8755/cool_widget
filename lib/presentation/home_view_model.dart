@@ -1,3 +1,4 @@
+import 'package:cool_widget/presentation/components/alert_dialog/cool_alert_dialog.dart';
 import 'package:flutter/material.dart';
 
 class HomeViewModel extends ChangeNotifier {
@@ -6,55 +7,54 @@ class HomeViewModel extends ChangeNotifier {
 
   // 41개의 위젯 이름을 담은 리스트
   final List<String> widgetNames = [
+    "AlertDialog",
     "Avatar",
     "Avatar+Badge",
     "Badge",
-    "Button",
     "BottomSheet",
+    "Button",
     "Dialog",
+    "Dropdown",
+    "FilterChip",
     "FormField",
+    "Line",
+    "LoadingIndicator",
+    "MultiSelectGroup",
+    "SkeletonLoader",
     "SnackBar",
     "StepIndicator",
-    "RadioGroup",
+    "TabBar",
+    "ToggleGroup",
+    "Switch",
     // ==========================
-    "FilterChip",
-    "Alert",
+    "RatingBar",
     "AppBar",
     "NavigationBar",
     "Drawer",
     "ListTile",
-    "Checkbox",
-    "Switch",
     "DataPager",
     "Image",
-    // ==========================
     "Card",
+    "SearchBar",
+    "Carousel",
+    // ==========================
     "ExpansionTile",
-    "Dropdown",
-    "TabBar",
     "PageView",
     "Tooltip",
     "ProgressBar",
-    "LoadingIndicator",
     "DatePicker",
     "TimePicker",
-    // ==========================
     "Calendar",
     "RangeSlider",
     "SliverAppBar",
+    "Stepper",
+    // ==========================
     "DataTable",
     "ColorPicker",
-    "SkeletonLoader",
-    "Carousel",
-    "SearchBar",
-    "RatingBar",
-    "ActionChip",
-    // ==========================
-    "Stepper",
   ];
 
-  List<String> get completedWidgetNames => widgetNames.sublist(0, 10);
-  List<String> get incompleteWidgetNames => widgetNames.sublist(10);
+  List<String> get completedWidgetNames => widgetNames.sublist(0, 19);
+  List<String> get incompleteWidgetNames => widgetNames.sublist(19);
 
   ///
   /// 위젯 이름에 알맞게 라우팅
@@ -69,18 +69,14 @@ class HomeViewModel extends ChangeNotifier {
       debugPrint('라우팅 오류: $e\n$stackTrace');
       showDialog(
         context: context,
-        builder: (ctx) {
-          return AlertDialog(
-            title: const Text('오류'),
-            content: Text('$widgetName 페이지가 존재하지 않습니다.'),
-            actions: [
-              TextButton(
-                onPressed: () => Navigator.of(ctx).pop(),
-                child: const Text('확인'),
-              ),
-            ],
-          );
-        },
+        builder: (_) => CoolAlertDialog.singleBtn(
+          title: "",
+          subTitle: "페이지가 존재하지 않습니다.",
+          btnContent: "확인",
+          onBtnClicked: () {
+            Navigator.of(context).pop(); // 확인 버튼 클릭 시 닫기
+          },
+        ),
       );
     }
   }

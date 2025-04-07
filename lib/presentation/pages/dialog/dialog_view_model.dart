@@ -1,5 +1,5 @@
-import 'package:cool_widget/presentation/components/alert/alert.dart';
-import 'package:cool_widget/presentation/components/alert/alert_style.dart';
+import 'package:cool_widget/presentation/components/dialog/dialog.dart';
+import 'package:cool_widget/presentation/components/dialog/dialog_style.dart';
 import 'package:flutter/material.dart';
 
 class DialogViewModel extends ChangeNotifier {
@@ -8,7 +8,7 @@ class DialogViewModel extends ChangeNotifier {
 
   /// 밑에서 위로 올라오는 알림
   void bottomToTopAlert(BuildContext context) {
-    showCoolAlert(
+    showCoolDialog(
       context: context,
       size: AlertSize.medium,
       child: Material(

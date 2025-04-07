@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class RadioGroupViewModel extends ChangeNotifier {
+class MultiSelectGroupViewModel extends ChangeNotifier {
   final State state;
 
   List<RadioOption> items = RadioOption.values;
   RadioOption selectedOption = RadioOption.option1;
 
   /// CONSTRUCTOR
-  RadioGroupViewModel(this.state);
+  MultiSelectGroupViewModel(this.state);
 
   /// 값 변경시
   void onChanged(RadioOption value) {

@@ -1,38 +1,38 @@
 import 'package:cool_widget/app/style/app_color.dart';
 import 'package:cool_widget/app/style/app_text_style.dart';
-import 'package:cool_widget/presentation/components/radio_group/cool_radio_group_widget.dart';
-import 'package:cool_widget/presentation/pages/radio_group/radio_group_view_model.dart';
+import 'package:cool_widget/presentation/components/single_select_group/cool_single_select_group_widget.dart';
+import 'package:cool_widget/presentation/pages/multi_select_group/multi_select_group_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:provider/provider.dart';
 
-class RadioGroupPage extends StatefulWidget {
-  const RadioGroupPage({super.key});
+class MultiSelectGroup extends StatefulWidget {
+  const MultiSelectGroup({super.key});
 
   @override
-  State<RadioGroupPage> createState() => _RadioGroupPageState();
+  State<MultiSelectGroup> createState() => _MultiSelectGroupState();
 }
 
-class _RadioGroupPageState extends State<RadioGroupPage> {
-  late RadioGroupViewModel viewModel;
+class _MultiSelectGroupState extends State<MultiSelectGroup> {
+  late MultiSelectGroupViewModel viewModel;
 
   @override
   void initState() {
     super.initState();
-    viewModel = RadioGroupViewModel(this);
+    viewModel = MultiSelectGroupViewModel(this);
   }
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider<RadioGroupViewModel>.value(
+    return ChangeNotifierProvider<MultiSelectGroupViewModel>.value(
       value: viewModel,
-      child: Consumer<RadioGroupViewModel>(
+      child: Consumer<MultiSelectGroupViewModel>(
         builder: (context, value, child) {
           return Scaffold(
             appBar: AppBar(title: const Text("Radio Group")),
             body: Column(
               children: [
-                CoolRadioGroup<RadioOption>(
+                CoolSingleSelectGroup<RadioOption>(
                   items: viewModel.items,
                   selectedValue: viewModel.selectedOption,
                   onChanged: (value) => viewModel.onChanged(value),

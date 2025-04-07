@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 
-class CoolRadioGroup<T> extends StatelessWidget {
+class CoolMultiSelectGroup<T> extends StatelessWidget {
   final List<T> items;
-  final T? selectedValue;
-  final ValueChanged<T> onChanged;
+  final Set<T> selectedValues;
+  final ValueChanged<Set<T>> onChanged;
   final Widget Function(T item, bool isSelected) itemBuilder;
   final Axis direction;
 
-  const CoolRadioGroup({
+  const CoolMultiSelectGroup({
     super.key,
     required this.items,
-    this.selectedValue,
+    required this.selectedValues,
     required this.onChanged,
     required this.itemBuilder,
     this.direction = Axis.vertical,
@@ -22,11 +22,19 @@ class CoolRadioGroup<T> extends StatelessWidget {
       direction: direction,
       mainAxisAlignment: MainAxisAlignment.center,
       children: items.map((item) {
-        final bool isSelected = item == selectedValue;
-        
-        /// ⚠️ itemBuilder 내부에서는 버튼 사용을 자제해주세요
+        final bool isSelected = selectedValues.contains(item);
+
         return GestureDetector(
-          onTap: () => onChanged(item),
+          onTap: () {
+            // 다중 선택 토글 로직
+            final newSelected = Set<T>.from(selectedValues);
+            if (newSelected.contains(item)) {
+              newSelected.remove(item);
+            } else {
+              newSelected.add(item);
+            }
+            onChanged(newSelected);
+          },
           child: itemBuilder(item, isSelected),
         );
       }).toList(),

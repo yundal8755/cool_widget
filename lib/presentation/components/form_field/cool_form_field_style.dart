@@ -1,48 +1,73 @@
 import 'package:flutter/material.dart';
+import 'package:cool_widget/app/style/app_color.dart';
+import 'package:cool_widget/app/style/app_text_style.dart';
 
 class CoolFormFieldStyle {
+  static const Color activeColor = AppColor.green;
+  static const Color borderInactiveColor = AppColor.gray060;
+  static const Color hintColor = AppColor.gray060;
+  static const double borderThickness = 0.5;
+  static TextStyle hintStyle = AppTextStyle.h3.copyWith(color: hintColor);
 
-  /// Outline Border
-  static InputDecoration outlineStyle({
-    String? label,
-    String? hint,
-    EdgeInsets? contentPadding,
+  /// Underline Style
+  static InputDecoration getUnderlineDecoration({
+    required bool isFocused,
+    required String? hintText,
+    Widget? suffixIcon,
   }) {
+    final borderColor = isFocused ? activeColor : borderInactiveColor;
     return InputDecoration(
-      labelText: label,
-      hintText: hint,
-      border: const OutlineInputBorder(),
-      contentPadding: contentPadding ?? const EdgeInsets.all(12),
+      hintText: hintText,
+      hintStyle: hintStyle,
+      suffixIcon: suffixIcon,
+      enabledBorder: UnderlineInputBorder(
+        borderSide: BorderSide(color: borderColor, width: borderThickness),
+      ),
+      focusedBorder: UnderlineInputBorder(
+        borderSide: BorderSide(color: borderColor, width: borderThickness),
+      ),
+      errorBorder: const UnderlineInputBorder(
+        borderSide: BorderSide(color: Colors.red),
+      ),
+      focusedErrorBorder: const UnderlineInputBorder(
+        borderSide: BorderSide(color: Colors.red),
+      ),
+      errorText: null,
     );
   }
 
-  /// Underline Border
-  static InputDecoration underlineStyle({
-    String? label,
-    String? hint,
+  /// Outline Style
+  static InputDecoration getOutlineDecoration({
+    required bool isFocused,
+    required String? hintText,
+    Widget? suffixIcon,
   }) {
-    return InputDecoration(
-      labelText: label,
-      hintText: hint,
-      border: const UnderlineInputBorder(),
-    );
-  }
+    final borderColor = isFocused ? activeColor : borderInactiveColor;
 
-  /// boxDecoration을 감싸는 경우
-  static BoxDecoration boxShadowDecoration({
-    Color color = Colors.white,
-    double radius = 8,
-  }) {
-    return BoxDecoration(
-      color: color,
-      borderRadius: BorderRadius.circular(radius),
-      boxShadow: const [
-        BoxShadow(
-          color: Colors.black26,
-          offset: Offset(0, 3),
-          blurRadius: 6,
-        ),
-      ],
+    return InputDecoration(
+      hintText: hintText,
+      hintStyle: hintStyle,
+      suffixIcon: suffixIcon,
+
+      // 테두리(Radius 등)를 OutlineInputBorder에서 지정
+      enabledBorder: OutlineInputBorder(
+        borderSide: BorderSide(color: borderColor, width: borderThickness),
+        borderRadius: BorderRadius.circular(12), // <-- 원하는 Radius
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderSide: BorderSide(color: borderColor, width: borderThickness),
+        borderRadius: BorderRadius.circular(12), // <-- 원하는 Radius
+      ),
+
+      errorBorder: const OutlineInputBorder(
+        borderSide: BorderSide(color: Colors.red),
+        borderRadius: BorderRadius.all(Radius.circular(12)), // 같이 조정 가능
+      ),
+      focusedErrorBorder: const OutlineInputBorder(
+        borderSide: BorderSide(color: Colors.red),
+        borderRadius: BorderRadius.all(Radius.circular(12)),
+      ),
+      errorText: null,
     );
   }
 }
