@@ -1,163 +1,132 @@
 import 'package:flutter/material.dart';
 
-class CustomAnimatedTabBar extends StatefulWidget {
-  final TabController controller;
-  final List<String> tabs;
-  final Color indicatorColor;
-  final Color selectedTextColor;
-  final Color unselectedTextColor;
-  final double indicatorHeight;
-  final double indicatorCurveHeight;
-  final Duration duration;
+// ========================= CommonTabBar =========================
 
-  const CustomAnimatedTabBar({
-    super.key,
-    required this.controller,
-    required this.tabs,
-    this.indicatorColor = Colors.blue,
-    this.selectedTextColor = Colors.blue,
-    this.unselectedTextColor = Colors.grey,
-    this.indicatorHeight = 4.0,
-    this.indicatorCurveHeight = 8.0, // 인디케이터 곡선 높이(커스텀 예시)
-    this.duration = const Duration(milliseconds: 300),
-  });
+class CommonTabBar extends StatelessWidget {
+  final TabController tabController;
+  final List<String> tabLabels;
+  final double totalWidth; // 전체 화면 너비
+  final int tabCount; // 탭 개수 (최대 4)
 
-  @override
-  State<CustomAnimatedTabBar> createState() => _CustomAnimatedTabBarState();
-}
-
-class _CustomAnimatedTabBarState extends State<CustomAnimatedTabBar> {
-  // 여분의 AnimationController를 굳이 만들 필요 없이,
-  // TabController의 animation을 통해도 인디케이터 위치/상태를 추적할 수 있음.
-  // 필요하다면 별도의 AnimationController를 사용해도 됨.
-
-  @override
-  void initState() {
-    super.initState();
-    // Tab 변경 시 setState로 재랜더링하여 텍스트 색 변경 반영
-    widget.controller.addListener(() {
-      setState(() {});
-    });
-  }
-
-  @override
-  void dispose() {
-    widget.controller.removeListener(() {});
-    super.dispose();
-  }
+  const CommonTabBar({
+    Key? key,
+    required this.tabController,
+    required this.tabLabels,
+    required this.totalWidth,
+    required this.tabCount,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    // 전체 탭 화면의 너비
-    final tabCount = widget.tabs.length;
+    // 탭 개수만큼 등분된 폭
+    // (예: 탭이 2개면 1/2, 3개면 1/3, 4개면 1/4)
+    final double singleTabWidth = totalWidth / tabCount;
 
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        final tabWidth = constraints.maxWidth / tabCount;
+    return ColoredBox(
+      color: Colors.white,
+      child: Stack(
+        children: [
+          // Flutter 기본 TabBar 사용
+          // isScrollable=false 면 전체 폭을 차지하고, 내부적으로 탭 개수만큼 균등 배분
+          // 단, 아래 처럼 Expanded를 감싸거나 전체 폭 제한이 있어야
+          // 정확히 singleTabWidth씩 나누어 집니다.
+          SizedBox(
+            width: totalWidth,
+            child: TabBar(
+              controller: tabController,
+              // 고정 너비 배분을 위해, isScrollable=false
+              isScrollable: false,
+              tabs: tabLabels.map((tabText) => Tab(text: tabText)).toList(),
 
-        return Stack(
-          children: [
-            // 1) 탭 항목 (텍스트 등)
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: List.generate(tabCount, (index) {
-                final bool isSelected = (index == widget.controller.index);
-                return Expanded(
-                  child: GestureDetector(
-                    onTap: () {
-                      widget.controller.animateTo(index,
-                          duration: widget.duration, curve: Curves.easeInOut);
-                    },
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(vertical: 12),
-                      alignment: Alignment.center,
-                      child: AnimatedDefaultTextStyle(
-                        duration: widget.duration,
-                        style: TextStyle(
-                          fontSize: isSelected ? 16 : 14,
-                          fontWeight:
-                              isSelected ? FontWeight.bold : FontWeight.normal,
-                          color: isSelected
-                              ? widget.selectedTextColor
-                              : widget.unselectedTextColor,
-                        ),
-                        child: Text(widget.tabs[index]),
-                      ),
-                    ),
-                  ),
-                );
-              }),
+              // 외관 스타일
+              labelColor: Colors.black,
+              unselectedLabelColor: Colors.grey,
+              labelStyle: const TextStyle(fontSize: 16),
+              unselectedLabelStyle: const TextStyle(fontSize: 14),
+
+              // 커스텀 인디케이터: 탭 한 칸에 맞춘 폭
+              indicator: TechtalkTabBar(
+                width: singleTabWidth,
+                height: 2,
+              ),
             ),
-            // 2) 애니메이션 인디케이터
-            // TabController.animation.value를 사용하면
-            // 현재 페이지(인덱스) 사이 위치를 0~(탭수-1) 범위로 실시간 얻을 수 있음.
-            AnimatedBuilder(
-              animation: widget.controller.animation ?? widget.controller,
-              builder: (context, child) {
-                // animation.value는 예: 0.0 (0번 탭), 0.5 (0번과 1번 사이), 1.0 (1번 탭) ...
-                final animationValue = widget.controller.animation!.value;
-                // 인디케이터의 시작 위치(왼쪽)
-                final indicatorLeft = animationValue * tabWidth;
+          ),
 
-                return Positioned(
-                  bottom: 0,
-                  left: indicatorLeft,
-                  width: tabWidth,
-                  child: CustomPaint(
-                    painter: _IndicatorPainter(
-                      color: widget.indicatorColor,
-                      height: widget.indicatorHeight,
-                      curveHeight: widget.indicatorCurveHeight,
-                    ),
-                  ),
-                );
-              },
+          // 아래쪽 Divider
+          Positioned(
+            bottom: 0,
+            left: 0,
+            right: 0,
+            child: Container(
+              height: 0.5,
+              color: Colors.grey.shade300,
             ),
-          ],
-        );
-      },
+          ),
+        ],
+      ),
     );
   }
 }
 
-/// 커스텀 인디케이터를 그려주는 페인터
-class _IndicatorPainter extends CustomPainter {
-  final Color color;
-  final double height;
-  final double curveHeight;
+// ========================= TechtalkTabBar =========================
 
-  _IndicatorPainter({
-    required this.color,
-    required this.height,
-    required this.curveHeight,
+class TechtalkTabBar extends Decoration {
+  final double width;
+  final double height; // 인디케이터 높이
+
+  // 기본 높이 2, width는 (화면너비 / 탭개수)로 설정
+  const TechtalkTabBar({
+    required this.width,
+    this.height = 2,
   });
 
   @override
-  void paint(Canvas canvas, Size size) {
-    // 인디케이터의 너비: size.width
-    // 인디케이터의 높이: height (단순한 직선이 아니라 곡선 모양으로 표현하는 예시)
-    final paint = Paint()
-      ..color = color
-      ..style = PaintingStyle.fill;
-
-    // 간단히 직선+곡선을 섞어 그려볼 예시
-    final path = Path();
-    path.moveTo(0, 0);
-    path.lineTo(0, -curveHeight);
-    path.quadraticBezierTo(
-        size.width / 1, -curveHeight * 1, size.width, -curveHeight);
-    path.lineTo(size.width, 0);
-    path.lineTo(size.width, height);
-    path.lineTo(0, height);
-    path.close();
-
-    canvas.drawPath(path, paint);
+  BoxPainter createBoxPainter([VoidCallback? onChanged]) {
+    return _CustomPainter(
+      width: width,
+      height: height,
+    );
   }
+}
+
+class _CustomPainter extends BoxPainter {
+  final double width;
+  final double height;
+
+  _CustomPainter({
+    required this.width,
+    required this.height,
+  });
 
   @override
-  bool shouldRepaint(_IndicatorPainter oldDelegate) {
-    return oldDelegate.color != color ||
-        oldDelegate.height != height ||
-        oldDelegate.curveHeight != curveHeight;
+  void paint(Canvas canvas, Offset offset, ImageConfiguration configuration) {
+    final paint = Paint()
+      ..color = Colors.black
+      ..style = PaintingStyle.fill;
+
+    // 현재 탭 한 칸의 폭 = configuration.size!.width
+    // 하지만 여기서는 이미 width 파라미터로 (화면너비 / 탭수) 전달받았으므로
+    // 그대로 사용할 수 있음.
+    // 아래는 "해당 탭" 영역을 정확히 채운다고 가정해, xCenter 기준으로 인디케이터를 그립니다.
+
+    final double xCenter = offset.dx + (configuration.size!.width / 2);
+    final double yBottom = configuration.size!.height - height;
+
+    // 커스텀 인디케이터 폭
+    // 여기서는 "화면 / 탭 수" 로 넘어온 width.
+    // 만약 특정 패딩을 더 주고 싶으면, width에서 몇 픽셀 빼도 됨
+    final double indicatorWidth = width;
+
+    final double startX = xCenter - (indicatorWidth / 2);
+    final double endX = xCenter + (indicatorWidth / 2);
+
+    // 그리기
+    canvas.drawRRect(
+      RRect.fromRectAndRadius(
+        Rect.fromLTRB(startX, yBottom, endX, yBottom + height),
+        Radius.circular(height / 2),
+      ),
+      paint,
+    );
   }
 }
