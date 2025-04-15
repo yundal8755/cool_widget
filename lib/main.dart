@@ -5,6 +5,7 @@ import 'package:cool_widget/presentation/pages/carousel/carousel_page.dart';
 import 'package:cool_widget/presentation/pages/dialog/dialog_page.dart';
 import 'package:cool_widget/presentation/pages/bottom_sheet/bottom_sheet_page.dart';
 import 'package:cool_widget/presentation/pages/button/button_page.dart';
+import 'package:cool_widget/presentation/pages/drawer/drawer_page.dart';
 import 'package:cool_widget/presentation/pages/drop_down/drop_down_page.dart';
 import 'package:cool_widget/presentation/pages/filter_chip/filter_chip_page.dart';
 import 'package:cool_widget/presentation/pages/line/line_page.dart';
@@ -51,6 +52,7 @@ class _App extends StatelessWidget {
         '/Carousel': (context) => const CarouselPage(),
         '/Dialog': (context) => const DialogPage(),
         '/Dropdown': (context) => const DropDownPage(),
+        '/Drawer': (context) => const DrawerPage(),
         '/FilterChip': (context) => const FilterChipPage(),
         '/FormField': (context) => const FormFieldPage(),
         '/Line': (context) => const LinePage(),

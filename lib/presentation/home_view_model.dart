@@ -15,6 +15,7 @@ class HomeViewModel extends ChangeNotifier {
     "Button",
     "Carousel",
     "Dialog",
+    "Drawer",
     "Dropdown",
     "FilterChip",
     "FormField",
@@ -34,22 +35,20 @@ class HomeViewModel extends ChangeNotifier {
     "RatingBar",
     "AppBar",
     "NavigationBar",
-    "Drawer",
     "ListTile",
     "DataPager",
     "ExpansionTile",
     "ColorPicker",
     "PageView",
     "Tooltip",
-    // ==========================
     "ProgressBar",
     "RangeSlider",
     "SliverAppBar",
     "Stepper",
   ];
 
-  List<String> get completedWidgetNames => widgetNames.sublist(0, 23);
-  List<String> get incompleteWidgetNames => widgetNames.sublist(23);
+  List<String> get completedWidgetNames => widgetNames.sublist(0, 24);
+  List<String> get incompleteWidgetNames => widgetNames.sublist(24);
 
   ///
   /// 위젯 이름에 알맞게 라우팅
