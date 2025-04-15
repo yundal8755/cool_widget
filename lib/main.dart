@@ -2,6 +2,7 @@ import 'package:cool_widget/presentation/pages/accodian/accodian_page.dart';
 import 'package:cool_widget/presentation/pages/alert_dialog/alert_dialog_page.dart';
 import 'package:cool_widget/presentation/pages/avatar/avatar_page.dart';
 import 'package:cool_widget/presentation/pages/badge/badge_page.dart';
+import 'package:cool_widget/presentation/pages/calendar/calendar_page.dart';
 import 'package:cool_widget/presentation/pages/carousel/carousel_page.dart';
 import 'package:cool_widget/presentation/pages/dialog/dialog_page.dart';
 import 'package:cool_widget/presentation/pages/bottom_sheet/bottom_sheet_page.dart';
@@ -24,8 +25,13 @@ import 'package:cool_widget/presentation/pages/switch/switch_page.dart';
 import 'package:cool_widget/presentation/pages/tab_bar/tab_bar_page.dart';
 import 'package:cool_widget/presentation/pages/toggle_group/toggle_group_page.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/date_symbol_data_local.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // 'ko_KR' 로케일에 대한 intl 날짜 형식 데이터를 로드
+  await initializeDateFormatting('ko_KR', null);
   runApp(const _App());
 }
 
@@ -36,6 +42,7 @@ class _App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      locale: const Locale('ko', 'KR'),
       title: 'Cool Widget',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
@@ -51,6 +58,7 @@ class _App extends StatelessWidget {
         '/Badge': (context) => const BadgePage(),
         '/BottomSheet': (context) => const BottomSheetPage(),
         '/Button': (context) => const ButtonPage(),
+        '/Calendar': (context) => const CalendarPage(),
         '/Carousel': (context) => const CarouselPage(),
         '/Dialog': (context) => const DialogPage(),
         '/Dropdown': (context) => const DropDownPage(),

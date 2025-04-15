@@ -14,6 +14,7 @@ class HomeViewModel extends ChangeNotifier {
     "Badge",
     "BottomSheet",
     "Button",
+    "Calendar",
     "Carousel",
     "Dialog",
     "Drawer",
@@ -48,8 +49,8 @@ class HomeViewModel extends ChangeNotifier {
     "Stepper",
   ];
 
-  List<String> get completedWidgetNames => widgetNames.sublist(0, 25);
-  List<String> get incompleteWidgetNames => widgetNames.sublist(25);
+  List<String> get completedWidgetNames => widgetNames.sublist(0, 26);
+  List<String> get incompleteWidgetNames => widgetNames.sublist(26);
 
   ///
   /// 위젯 이름에 알맞게 라우팅
