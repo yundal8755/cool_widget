@@ -1,3 +1,4 @@
+import 'package:cool_widget/presentation/pages/accodian/accodian_page.dart';
 import 'package:cool_widget/presentation/pages/alert_dialog/alert_dialog_page.dart';
 import 'package:cool_widget/presentation/pages/avatar/avatar_page.dart';
 import 'package:cool_widget/presentation/pages/badge/badge_page.dart';
@@ -43,6 +44,7 @@ class _App extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => const HomePage(),
+        '/Accodian': (context) => const AccodianPage(),
         '/AlertDialog': (context) => const AlertDialogPage(),
         '/Avatar': (context) => const AvatarPage(),
         '/Avatar+Badge': (context) => const AvatarWithBadgePage(),

@@ -7,6 +7,7 @@ class HomeViewModel extends ChangeNotifier {
 
   // 41개의 위젯 이름을 담은 리스트
   final List<String> widgetNames = [
+    "Accodian",
     "AlertDialog",
     "Avatar",
     "Avatar+Badge",
@@ -47,8 +48,8 @@ class HomeViewModel extends ChangeNotifier {
     "Stepper",
   ];
 
-  List<String> get completedWidgetNames => widgetNames.sublist(0, 24);
-  List<String> get incompleteWidgetNames => widgetNames.sublist(24);
+  List<String> get completedWidgetNames => widgetNames.sublist(0, 25);
+  List<String> get incompleteWidgetNames => widgetNames.sublist(25);
 
   ///
   /// 위젯 이름에 알맞게 라우팅
